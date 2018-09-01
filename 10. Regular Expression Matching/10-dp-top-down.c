@@ -15,10 +15,12 @@ bool isMatch(char* s, char* p) {
   for(int i = 1; i <= slen; i++) {
     for(int j = 1; j <= plen; j++) {
       if(p[j - 1] == '*') {
-        dp[i][j] = dp[i][j - 2] || (s[i - 1] == p[j - 2] || p[j - 2] == '.') && dp[i - 1][j];
+        bool head_match = s[i - 1] == p[j - 2] || p[j - 2] == '.'
+        dp[i][j] = dp[i][j - 2] || head_match && dp[i - 1][j];
       }
       else {
-        dp[i][j] = (s[i - 1] == p[j - 1] || p[j - 1] == '.') && dp[i - 1][j - 1];
+        bool head_match = s[i - 1] == p[j - 1] || p[j - 1] == '.'
+        dp[i][j] = head_match && dp[i - 1][j - 1];
       }
     }
   }

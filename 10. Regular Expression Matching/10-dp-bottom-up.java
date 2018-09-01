@@ -1,3 +1,6 @@
+/** When filling dp[i][j], look at s[i] and p[i]
+ * The way of thinking is slightly different from top-down
+ */
 public boolean isMatch(String s, String p) {
   int slen = s.length();
   int plen = p.length();
